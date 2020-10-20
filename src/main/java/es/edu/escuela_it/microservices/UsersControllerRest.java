@@ -25,14 +25,22 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import es.edu.escuela_it.microservices.model.AccountDTO;
 import es.edu.escuela_it.microservices.model.UserDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping("/users")
+@Api(tags="User API REST")
 public class UsersControllerRest {
 	
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<UserDTO> getUserById(@PathVariable Integer id) {
+	@ApiOperation(notes="Retrieve one user system by id",value="Get user by id")
+	public ResponseEntity<UserDTO> getUserById(
+			@ApiParam(example = "1", value="User identifier", allowableValues = "1, 2, 3, 4", required = true)
+			@PathVariable Integer id) {
+		
 		System.out.println("Usuario recuperado");
 		UserDTO userDTO=new UserDTO(1,"Jose");
 		userDTO.setLastName("Fernandez");

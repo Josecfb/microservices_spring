@@ -24,8 +24,8 @@ public class SwaggerConfiguration {
 			.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
 			.paths(PathSelectors.any())
 			.build()
-			.apiInfo(new ApiInfo("EscuelaIT", "Microservice", "1.0", "http://escuelait.com",
-					new Contact("Rafael Benedettelli", "escuelait.com", "escuelait@gmail.com"),
+			.apiInfo(new ApiInfo("Jose Carlos", "Microservice", "1.0", "http://escuelait.com",
+					new Contact("José Carlos Fernández Bermejo", "escuelait.com", "cursillos2002@gmail.com"),
 					"Uso exclusivo EscuelaIT", "http://anfix.com", Collections.emptyList()));
 	}
 }

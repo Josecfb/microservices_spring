@@ -22,7 +22,7 @@ public class ApplicationConfig {
 
 	private String[] countries;
 	
-	@Value(value="${java_home}")
+	@Value(value="@{java_home}")
 	private String jav;
 
 }
