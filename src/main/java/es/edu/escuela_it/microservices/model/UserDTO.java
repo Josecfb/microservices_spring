@@ -55,9 +55,9 @@ public class UserDTO extends RepresentationModel<UserDTO>{
 	@Email
 	private String email;
 	
-	@AssertTrue
+	@AssertTrue(message = "{app.field.active.error}")
 	private boolean active;
 	
-	@Past
+	@Past(message = "{app.field.bird_day.error}")
 	private LocalDate birdDate;
 }

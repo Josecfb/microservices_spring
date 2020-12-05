@@ -17,14 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-
 import es.edu.escuela_it.microservices.model.AccountDTO;
 import es.edu.escuela_it.microservices.model.UserDTO;
+import es.edu.escuela_it.microservices.services.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -34,6 +36,9 @@ import io.swagger.annotations.ApiParam;
 @Api(tags="User API REST")
 public class UsersControllerRest {
 	
+	@Autowired()
+	@Qualifier("DB")
+	private UserService userService;
 	
 	@GetMapping("/{id}")
 	@ApiOperation(notes="Retrieve one user system by id",value="Get user by id")
@@ -42,9 +47,8 @@ public class UsersControllerRest {
 			@PathVariable Integer id) {
 		
 		System.out.println("Usuario recuperado");
-		UserDTO userDTO=new UserDTO(1,"Jose");
-		userDTO.setLastName("Fernandez");
-		userDTO.setEdad(44);
+		UserDTO userDTO=userService.getUserById(id);
+
 		
 		Link withSelfRel =
 				linkTo(methodOn(UsersControllerRest.class).getUserById(userDTO.getId())).withSelfRel();
