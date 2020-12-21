@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -37,7 +38,8 @@ import io.swagger.annotations.ApiParam;
 public class UsersControllerRest {
 	
 	@Autowired()
-	@Qualifier("DB")
+
+	
 	private UserService userService;
 	
 	@GetMapping("/{id}")

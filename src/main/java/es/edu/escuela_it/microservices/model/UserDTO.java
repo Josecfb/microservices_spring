@@ -60,4 +60,8 @@ public class UserDTO extends RepresentationModel<UserDTO>{
 	
 	@Past(message = "{app.field.bird_day.error}")
 	private LocalDate birdDate;
+	
+	private String title;
+	
+	private String body;
 }
